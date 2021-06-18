@@ -1,0 +1,35 @@
+{
+  "name": "tictactoe-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/app.js",
+    "serve": "nodemon src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Stolyar100/TicTacToe-backend.git"
+  },
+  "keywords": [
+    "ExpressJs"
+  ],
+  "author": "Sstolyar100",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Stolyar100/TicTacToe-backend/issues"
+  },
+  "homepage": "https://github.com/Stolyar100/TicTacToe-backend#readme",
+  "devDependencies": {
+    "eslint": "^7.28.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.23.4",
+    "nodemon": "^2.0.7"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
