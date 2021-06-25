@@ -11,5 +11,6 @@ module.exports = {
   rules: {
     quotes: ['error', 'single', { avoidEscape: true }],
     semi: ['error', 'always'],
+    'class-methods-use-this': ['off'],
   },
-}
+};
