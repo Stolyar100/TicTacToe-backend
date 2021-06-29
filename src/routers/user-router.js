@@ -6,7 +6,7 @@ const UserRouter = new Router();
 UserRouter.post('/registration', UserController.registration);
 UserRouter.post('/login', UserController.login);
 UserRouter.post('/logout', UserController.logout);
-UserRouter.get('/activate/:hashPassword', UserController.activate);
+UserRouter.get('/activate/:link', UserController.activate);
 UserRouter.get('/refresh', UserController.refresh);
 UserRouter.get('/users', UserController.getUsers);
 
