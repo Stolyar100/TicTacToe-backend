@@ -69,7 +69,7 @@ class UserService {
   }
 
   async refresh(refreshToken) {
-    if (refreshToken) {
+    if (!refreshToken) {
       throw ApiError.UnauthorizedError();
     }
     const userData = TokenService.validateRefreshToken(refreshToken);
