@@ -12,7 +12,7 @@ UserRouter.post(
   UserController.registration
 );
 UserRouter.post('/login', UserController.login);
-UserRouter.post('/logout', UserController.logout);
+UserRouter.put('/logout', UserController.logout);
 UserRouter.get('/activate/:link', UserController.activate);
 UserRouter.get('/refresh', UserController.refresh);
 UserRouter.get('/users', authMiddleware, UserController.getUsers);

@@ -15,7 +15,7 @@ class UserController {
         maxAge: 30 * 24 * 60 * 60 * 1000,
         httpOnly: true,
       });
-      return res.json(userData);
+      return res.status(201).json(userData);
     } catch (e) {
       next(e);
     }
@@ -40,7 +40,7 @@ class UserController {
       const { refreshToken } = req.cookies;
       const token = await UserService.logout(refreshToken);
       res.clearCookie('refreshToken');
-      res.json(token);
+      res.sendStatus(204);
     } catch (e) {
       next(e);
     }
