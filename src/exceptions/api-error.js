@@ -5,6 +5,10 @@ module.exports = class ApiError extends Error {
     this.errors = errors;
   }
 
+  static PermissionDenied() {
+    return new ApiError(405, 'User is not authorized');
+  }
+
   static UnauthorizedError() {
     return new ApiError(401, 'User is not authorized');
   }
