@@ -3,12 +3,20 @@ const { Schema, model } = require('mongoose');
 const gameSymbols = ['x', 'o'];
 const fieldState = [...gameSymbols, ''];
 
+const fieldSchema = new Schema({ type: String, enum: fieldState });
+
+const PlayerSchema = new Schema({
+  user: { type: Schema.Types.ObjectId, ref: 'User' },
+  symbol: { type: String, enum: gameSymbols, required: true },
+});
+
 const GameSchema = new Schema({
   inviteCode: { type: String, unique: true, required: true },
-  host: { type: Schema.Types.ObjectId, ref: 'User', required: true },
-  hostSymbol: { type: String, enum: gameSymbols, required: true },
-  opponent: { type: Schema.Types.ObjectId, ref: 'User' },
-  gameField: [{ type: String, enum: fieldState }],
+  players: [PlayerSchema],
+  gameField: {
+    type: [fieldSchema],
+    default: ['', '', '', '', '', '', '', '', ''],
+  },
   currentMove: { type: Schema.Types.ObjectId, ref: 'User' },
 });
 
