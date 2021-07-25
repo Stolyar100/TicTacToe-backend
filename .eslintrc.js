@@ -13,5 +13,9 @@ module.exports = {
     semi: ['error', 'always'],
     'class-methods-use-this': ['off'],
     'consistent-return': ['off'],
+    'no-underscore-dangle': [
+      'error',
+      { enforceInMethodNames: false, allowAfterThis: true },
+    ],
   },
 };
