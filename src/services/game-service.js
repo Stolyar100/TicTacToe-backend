@@ -8,7 +8,7 @@ class GameService {
       throw ApiError.BadRequest('symbol field is required');
     }
 
-    const inviteCode = generateInviteCode();
+    const inviteCode = this._generateInviteCode();
     const game = await GameModel.create({
       inviteCode,
       players: [{ user: userId, symbol }],
@@ -18,7 +18,7 @@ class GameService {
     return { ...gameDto };
   }
 
-  #generateInviteCode() {
+  _generateInviteCode() {
     const code = Math.random().toString(16).substr(2, 7);
     return code;
   }
