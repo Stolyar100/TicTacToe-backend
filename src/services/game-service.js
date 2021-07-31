@@ -4,10 +4,6 @@ const GameModel = require('../models/game-model');
 
 class GameService {
   async createGame(userId, symbol) {
-    if (!symbol) {
-      throw ApiError.BadRequest('symbol field is required');
-    }
-
     const inviteCode = this._generateInviteCode();
     const game = await GameModel.create({
       inviteCode,
