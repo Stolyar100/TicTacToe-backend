@@ -1,14 +1,12 @@
 const { Schema, model } = require('mongoose');
-
-const gameSymbols = ['x', 'o'];
-const fieldState = [...gameSymbols, ''];
+const GameSymbols = require('../shared/game-symbols');
 
 const PlayerSchema = new Schema({
   user: { type: Schema.Types.ObjectId, ref: 'User' },
-  symbol: { type: String, enum: gameSymbols, required: true },
+  symbol: { type: String, enum: GameSymbols.symbolEnum, required: true },
 });
 
-const field = { type: String, enum: fieldState, default: '' };
+const field = { type: String, enum: GameSymbols.fieldStateEnum, default: '' };
 
 const GameSchema = new Schema({
   inviteCode: { type: String, unique: true, required: true },
