@@ -1,13 +1,13 @@
 const { Router } = require('express');
-const { body } = require('express-validator');
+const { checkSchema } = require('express-validator');
 const UserController = require('../controllers/user-controller');
+const registrationValidationSchema = require('../validation-schemas/registration-validation-schema');
 
 const AuthRouter = new Router();
 
 AuthRouter.post(
   '/registration',
-  body('email').isEmail(),
-  body('password').isLength({ min: 6, max: 32 }),
+  checkSchema(registrationValidationSchema),
   UserController.registration
 );
 AuthRouter.post('/login', UserController.login);
