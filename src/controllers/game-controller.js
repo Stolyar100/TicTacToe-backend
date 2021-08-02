@@ -10,9 +10,9 @@ class GameController {
         return next(ApiError.BadRequest('Validation error', errors.array()));
       }
       const { symbol } = req.body;
-      const { id } = req.user;
+      const userId = req.user.id;
 
-      const gameData = await GameService.createGame(id, symbol);
+      const gameData = await GameService.createGame(userId, symbol);
 
       return res.status(201).json(gameData);
     } catch (e) {
