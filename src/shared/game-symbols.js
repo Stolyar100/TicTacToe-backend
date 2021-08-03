@@ -6,6 +6,13 @@ class GameSymbols {
     this.symbolEnum = [this.x, this.o];
     this.fieldStateEnum = [this.x, this.o, this.emptyField];
   }
+
+  getOppositeSymbol(symbolToInvert) {
+    if (symbolToInvert === this.x) {
+      return this.o;
+    }
+    return this.x;
+  }
 }
 
 module.exports = new GameSymbols();
