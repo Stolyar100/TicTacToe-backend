@@ -12,12 +12,7 @@ GameRouter.post(
   authMiddleware,
   GameController.createGame
 );
-GameRouter.post(
-  '/:inviteCode',
-  checkSchema(gameValidationSchema),
-  authMiddleware,
-  GameController.joinGame
-);
+GameRouter.post('/:inviteCode', authMiddleware, GameController.joinGame);
 GameRouter.get('/:inviteCode', authMiddleware, GameController.getGame);
 GameRouter.put('/:inviteCode', authMiddleware, GameController.makeMove);
 GameRouter.delete('/:inviteCode', authMiddleware, GameController.deleteGame);
