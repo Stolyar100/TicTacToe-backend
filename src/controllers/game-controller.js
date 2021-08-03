@@ -24,12 +24,10 @@ class GameController {
 
   async joinGame(res, req, next) {
     try {
-      this._handleValidationResults(req, next);
       const { inviteCode } = req.params;
       const userId = req.user.id;
-      const { symbol } = req.body;
 
-      const gameData = await GameService.joinGame(inviteCode, userId, symbol);
+      const gameData = await GameService.joinGame(inviteCode, userId);
       return res.status(200).json(gameData);
     } catch (e) {
       next(e);
