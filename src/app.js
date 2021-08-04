@@ -4,6 +4,7 @@ const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 const AuthRouter = require('./routers/auth-router');
 const UserRouter = require('./routers/user-router');
+const GameRouter = require('./routers/game-router');
 const errorMiddleware = require('./middlewares/error-middleware');
 
 const { PORT } = process.env;
@@ -13,7 +14,8 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors());
 app.use('/auth', AuthRouter);
-app.use('/users/', UserRouter);
+app.use('/users', UserRouter);
+app.use('/game', GameRouter);
 app.use(errorMiddleware);
 
 const start = async () => {
