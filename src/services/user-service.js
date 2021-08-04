@@ -5,9 +5,10 @@ const MailService = require('./mail-service');
 const TokenService = require('./token-service');
 const UserDto = require('../dtos/user-dto');
 const ApiError = require('../exceptions/api-error');
+const userModel = require('../models/user-model');
 
 class UserService {
-  async registration(email, password) {
+  async registration(email, nickname, password) {
     const candidate = await UserModel.findOne({ email });
     if (candidate) {
       throw ApiError.BadRequest(`User with email - ${email} already exists`);
@@ -18,6 +19,7 @@ class UserService {
 
     const user = await UserModel.create({
       email,
+      nickname,
       password: hashPassword,
       activationLink,
     });
@@ -88,6 +90,11 @@ class UserService {
   async getAllUsers() {
     const users = await UserModel.find();
     return users;
+  }
+
+  async checkIsNicknameUnique(nickname) {
+    const user = await userModel.findOne({ nickname });
+    return !user;
   }
 }
 
