@@ -34,6 +34,18 @@ class GameController {
     }
   }
 
+  async getGame(res, req, next) {
+    try {
+      const { inviteCode } = req.params;
+      const userId = req.user.id;
+
+      const gameData = await GameService.getGame(inviteCode, userId);
+      return res.status(200).json(gameData);
+    } catch (e) {
+      next(e);
+    }
+  }
+
   _handleValidationResults(req, next) {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
